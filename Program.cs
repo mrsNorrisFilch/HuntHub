@@ -31,6 +31,7 @@ app.MapGet("/api/locations/{location}", async (string location, ILocationReposit
     .ProducesProblem(StatusCodes.Status400BadRequest)
     .Produces(StatusCodes.Status404NotFound);
 
+app.MapGet("/", () => Results.Redirect("/swagger")).ExcludeFromDescription();
 app.MapGet("/api/health", () => Results.Ok("ok")).ExcludeFromDescription();
 
 app.Run();
