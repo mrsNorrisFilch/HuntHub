@@ -1,0 +1,7 @@
+@host = https://localhost:5001
+
+GET {{host}}/api/locations/Paris
+
+###
+
+GET {{host}}/api/locations/Atlantis

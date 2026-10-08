@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: location-info-service
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: Database__Host
+        fromDatabase:
+          name: locations-db
+          property: host
+      - key: Database__Port
+        fromDatabase:
+          name: locations-db
+          property: port
+      - key: Database__Name
+        fromDatabase:
+          name: locations-db
+          property: database
+      - key: Database__User
+        fromDatabase:
+          name: locations-db
+          property: user
+      - key: Database__Password
+        fromDatabase:
+          name: locations-db
+          property: password
+
+databases:
+  - name: locations-db
+    databaseName: locations
+    user: locations_app
+    plan: free
